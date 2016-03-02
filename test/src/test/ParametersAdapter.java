@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter; 
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import org.w3c.dom.Element; 
  
  
  public class ParametersAdapter extends XmlAdapter<Parameters, Parameters2> {
@@ -16,6 +18,13 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  public Parameters2 unmarshal(Parameters val) throws Exception { 
 	 System.out.println("calling adapter");
 	 System.out.println(val);
+	 /*
+	List<Parameter> parameters=val.getParameters();
+	for(Parameter parameter:parameters)
+	{
+		List<Element>properties=new ArrayList<Element>();
+		properties=parameter.();
+	}*/
 	 Parameters2 parameters2=new Parameters2();
 	 Map<String,String> properties=new HashMap<String,String>();
 	 properties.put("123", "123");

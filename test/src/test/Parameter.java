@@ -11,9 +11,17 @@ import org.w3c.dom.Element;
 import com.jcabi.xml.XMLDocument;
 
 public class Parameter {
-	@XmlAnyElement
+	
 	protected List<Element> properties;
-    public Parameter(){
+	
+	@XmlAnyElement
+    public List<Element> getProperties() {
+		return properties;
+	}
+	public void setProperties(List<Element> properties) {
+		this.properties = properties;
+	}
+	public Parameter(){
     }
 	@Override
 	public String toString() {
