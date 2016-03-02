@@ -12,11 +12,11 @@ public class main {
 	{
 		
 
-		JAXBContext jaxbContext = JAXBContext.newInstance(Zone.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(Doc.class);
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-		StringReader reader = new StringReader("<Zone><name>123</name><startCoord><x>123</x><y>421</y></startCoord><endCoord><x>123</x><y>421</y></endCoord></Zone>");
-		Zone zone = (Zone) unmarshaller.unmarshal(reader);
+		StringReader reader = new StringReader("<Doc><parameters><parameter><aaa>213</aaa><bbb>213</bbb></parameter></parameters></Doc>");
+		Doc zone = (Doc) unmarshaller.unmarshal(reader);
 		System.out.println(zone);
 	}
 }
