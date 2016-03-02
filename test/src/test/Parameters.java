@@ -1,15 +1,15 @@
 package test;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
-
 public class Parameters {
-	
-	
 	protected List<Parameter> parameters;
+	
+	public Parameters() {
+		parameters=new ArrayList<Parameter>();
+	}
 
-	@XmlElement(name="parameter")
 	public List<Parameter> getParameters() {
 		return parameters;
 	}
@@ -17,14 +17,15 @@ public class Parameters {
 	public void setParameters(List<Parameter> parameters) {
 		this.parameters = parameters;
 	}
+
 	@Override
 	public String toString()
 	{
-		String string="";
+		String string="[";
 		for(Parameter paremeter:parameters)
 		{
 			string+=paremeter.toString();
 		}
-		return string;
+		return string+"]";
 	}
 }

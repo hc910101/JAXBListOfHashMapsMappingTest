@@ -10,29 +10,29 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import org.w3c.dom.Element; 
  
  
- public class ParametersAdapter extends XmlAdapter<Parameters, Parameters2> {
+ public class ParametersAdapter extends XmlAdapter<RawXmlParameters, Parameters> {
 
- public Parameters marshal(Parameters2 val) throws Exception { 
-	 return new Parameters();
+ public RawXmlParameters marshal(Parameters val) throws Exception { 
+	 return new RawXmlParameters();
  } 
- public Parameters2 unmarshal(Parameters val) throws Exception { 
-	 System.out.println("calling adapter");
-	 System.out.println(val);
-	 /*
-	List<Parameter> parameters=val.getParameters();
-	for(Parameter parameter:parameters)
+ public Parameters unmarshal(RawXmlParameters val) throws Exception {
+	List<RawXmlParameter> rawXmlParameters=val.getParameters();
+	Parameters parameters=new Parameters();
+	List<Parameter> list=new ArrayList<Parameter>();
+	for(RawXmlParameter rawXmlParameter:rawXmlParameters)
 	{
 		List<Element>properties=new ArrayList<Element>();
-		properties=parameter.();
-	}*/
-	 Parameters2 parameters2=new Parameters2();
-	 Map<String,String> properties=new HashMap<String,String>();
-	 properties.put("123", "123");
-	 Parameter2 parameter2 = new Parameter2();
-	 parameter2.setProperties(properties);
-	 List<Parameter2> list=new ArrayList<Parameter2>();
-	 list.add(parameter2);
-	 parameters2.setParameters(list);
-	 return parameters2;
+		properties=rawXmlParameter.getProperties();
+		Map<String,String> properties2=new HashMap<String,String>();
+		for(Element element:properties)
+		{
+			properties2.put(element.getNodeName(), element.getTextContent());
+		}
+		Parameter parameter = new Parameter();
+		parameter.setProperties(properties2);
+		list.add(parameter);
+	}
+	 parameters.setParameters(list);
+	 	return parameters;
 	 } 
  } 

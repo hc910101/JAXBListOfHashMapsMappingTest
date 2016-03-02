@@ -22,7 +22,7 @@ import com.jcabi.xml.XMLDocument;
 	}
 */
 	 @XmlJavaTypeAdapter(ParametersAdapter.class)
-	 protected Parameters2 parameters;
+	 protected Parameters parameters;
 		@Override
 		public String toString() {
 			return "Doc [Parameters=" + parameters + "]";
