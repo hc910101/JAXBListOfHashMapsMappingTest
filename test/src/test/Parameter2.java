@@ -16,5 +16,8 @@ public class Parameter2 {
 	public void setProperties(Map<String, String> properties) {
 		this.properties = properties;
 	}
-	
+	@Override
+	public String toString(){
+		return "Parameter["+properties.toString()+"]";
+	}
 }

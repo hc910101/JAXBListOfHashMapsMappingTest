@@ -18,11 +18,9 @@ public class Parameter {
 	@Override
 	public String toString() {
 		String string="Parameter [";
-		System.out.println("toString");
 		for(Element element:properties)
 		{
 			String xml = new XMLDocument(element).toString();
-			System.out.println(xml);
 			string+=xml;
 		};
 		return string=string+"]";

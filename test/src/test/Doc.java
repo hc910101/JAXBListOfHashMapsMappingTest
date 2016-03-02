@@ -3,6 +3,7 @@ package test;
 import java.util.List;
 
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.w3c.dom.Element;
 
@@ -20,8 +21,8 @@ import com.jcabi.xml.XMLDocument;
 		return "Doc [Parameters=" + parameters + "]";
 	}
 */
-	 @XmlElement(name="parameters")
-	 protected Parameters parameters;
+	 @XmlJavaTypeAdapter(ParametersAdapter.class)
+	 protected Parameters2 parameters;
 		@Override
 		public String toString() {
 			return "Doc [Parameters=" + parameters + "]";
