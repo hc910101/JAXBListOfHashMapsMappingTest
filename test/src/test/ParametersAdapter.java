@@ -1,19 +1,50 @@
 package test;
-
- import java.util.ArrayList;
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Map.Entry;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+import org.jdom2.Document;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.DOMOutputter;
+import org.w3c.dom.Element;
 
-import org.w3c.dom.Element; 
  
  
  public class ParametersAdapter extends XmlAdapter<RawXmlParameters, Parameters> {
 
  public RawXmlParameters marshal(Parameters val) throws Exception { 
-	 return new RawXmlParameters();
+	 String s="";
+	 List<Parameter> parameters=val.getParameters();
+	 SAXBuilder builder=new SAXBuilder();
+	 DOMOutputter outputter = new DOMOutputter();
+	 RawXmlParameters rawXmlParameters=new RawXmlParameters();
+	 List<RawXmlParameter> rawXmlParametersList=new ArrayList<RawXmlParameter>();
+	 for(Parameter parameter:parameters)
+	 {
+		 RawXmlParameter rawXmlParameter=new RawXmlParameter();
+		 Map<String,String> propertiesMap=parameter.getProperties();
+		 
+		 List<Element> elementList=new ArrayList<Element>();
+		 for(Entry<String, String> entry:propertiesMap.entrySet())
+		 {
+			 
+			 s="<"+entry.getKey()+">";
+			 s+=entry.getValue();
+			 s+="</"+entry.getKey()+">";
+			 Document doc = builder.build(new StringReader(s));
+			 org.jdom2.Element jdomElement=doc.getRootElement();
+			 Element element=outputter.output(jdomElement);
+			 elementList.add(element);
+		 }
+		 rawXmlParameter.setProperties(elementList);
+		 rawXmlParametersList.add(rawXmlParameter);
+		 
+	 }
+	 rawXmlParameters.setParameters(rawXmlParametersList);
+	 return rawXmlParameters;
  } 
  public Parameters unmarshal(RawXmlParameters val) throws Exception {
 	List<RawXmlParameter> rawXmlParameters=val.getParameters();
