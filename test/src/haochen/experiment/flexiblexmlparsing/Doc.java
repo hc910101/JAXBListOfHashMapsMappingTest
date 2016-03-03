@@ -1,4 +1,4 @@
-package test;
+package haochen.experiment.flexiblexmlparsing;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

@@ -1,4 +1,4 @@
-package test;
+package haochen.experiment.flexiblexmlparsing;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;

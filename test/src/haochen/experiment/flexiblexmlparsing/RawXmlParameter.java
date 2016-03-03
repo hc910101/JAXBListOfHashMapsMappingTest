@@ -1,4 +1,4 @@
-package test;
+package haochen.experiment.flexiblexmlparsing;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAnyElement;
 import org.w3c.dom.Element;
